@@ -1,0 +1,2 @@
+# horizontalPicturePicker
+模仿QQ聊天界面的横向图片选择器
