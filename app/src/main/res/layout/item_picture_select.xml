@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="5dp"
+    android:background="@color/black">
+
+    <me.example.greyson.horizontalpictureselector.SuitedImageView
+        android:id="@+id/pictureIV"
+        android:layout_width="wrap_content"
+        android:layout_height="190dp"
+        android:background="@color/bar_grey"
+        android:maxWidth="290dp"
+        android:scaleType="fitStart"
+        app:resize_base_on="height" />
+
+    <LinearLayout
+        android:id="@+id/checkLL"
+        android:layout_width="27dp"
+        android:layout_height="27dp"
+        android:layout_alignRight="@+id/pictureIV"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/checkTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/def_qq"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/videoShadowView"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignBottom="@+id/pictureIV"
+        android:layout_alignRight="@+id/pictureIV"
+        android:background="@drawable/buybuybuy"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/videoIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/pictureIV"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="5dp"
+        android:src="@drawable/video_icon"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/durationTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/pictureIV"
+        android:layout_alignRight="@+id/pictureIV"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_vertical"
+        android:text="00:00"
+        android:textColor="@color/white"
+        android:textSize="11sp"
+        android:visibility="invisible" />
+
+</RelativeLayout>
