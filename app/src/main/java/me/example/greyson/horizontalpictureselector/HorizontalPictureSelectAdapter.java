@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
@@ -81,9 +82,11 @@ public class HorizontalPictureSelectAdapter extends RecyclerView.Adapter<Horizon
         contentHolder.durationTV.setText(DateUtils.timeParse(duration));
         Glide.with(context)
                 .load(path)
-                .asBitmap()
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .placeholder(R.drawable.image_placeholder)
+//                .asBitmap()
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .placeholder(R.drawable.image_placeholder)
+                .apply(new RequestOptions().placeholder(R.drawable.image_placeholder))
+                .apply(new RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
                 .into(contentHolder.pictureIV);
 
         contentHolder.checkLL.setOnClickListener(new View.OnClickListener() {
@@ -188,7 +191,7 @@ public class HorizontalPictureSelectAdapter extends RecyclerView.Adapter<Horizon
                     holder.checkTV.startAnimation(animation);
                 }
             }*/
-            holder.pictureIV.setColorFilter(context.getResources().getColor( R.color.image_overlay_true), PorterDuff.Mode.SRC_ATOP);
+            holder.pictureIV.setColorFilter(context.getResources().getColor(R.color.image_overlay_true), PorterDuff.Mode.SRC_ATOP);
         } else {
             holder.pictureIV.setColorFilter(context.getResources().getColor
                     (R.color.image_overlay_false), PorterDuff.Mode.SRC_ATOP);

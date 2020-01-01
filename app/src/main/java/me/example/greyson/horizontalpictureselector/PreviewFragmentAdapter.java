@@ -2,7 +2,6 @@ package me.example.greyson.horizontalpictureselector;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
@@ -12,7 +11,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
@@ -93,18 +92,21 @@ public class PreviewFragmentAdapter extends PagerAdapter {
 
             Glide.with(contentView.getContext())
                     .load(path)
-                    .asBitmap()
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .into(new SimpleTarget<Bitmap>(480, 800) {
+                    .apply(new RequestOptions().placeholder(R.drawable.image_placeholder))
+                    .apply(new RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
+//                    .asBitmap()
+//                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(imageView);
+                    /*.into(new SimpleTarget<Bitmap>(480, 800) {
                         @Override
                         public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                            /*if (eqLongImg) {
+                            *//*if (eqLongImg) {
                                     displayLongPic(resource, longImg);
-                            } else {*/
+                            } else {*//*
                                 imageView.setImageBitmap(resource);
 //                            }
                         }
-                    });
+                    });*/
 
             /*imageView.setOnViewTapListener(new OnViewTapListener() {
                 @Override

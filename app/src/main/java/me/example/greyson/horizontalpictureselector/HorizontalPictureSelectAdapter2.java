@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
@@ -35,8 +36,8 @@ public class HorizontalPictureSelectAdapter2 extends RecyclerView.Adapter<Horizo
     private Context context;
     private RecyclerView recyclerView;
 
-    private List<LocalMedia> images = new ArrayList<LocalMedia>();
-    private List<LocalMedia> selectImages = new ArrayList<LocalMedia>();
+    private List<LocalMedia> images = new ArrayList<>();
+    private List<LocalMedia> selectImages = new ArrayList<>();
     private int maxSelectNum = 9;
 
     public HorizontalPictureSelectAdapter2(Context context) {
@@ -81,9 +82,11 @@ public class HorizontalPictureSelectAdapter2 extends RecyclerView.Adapter<Horizo
         contentHolder.durationTV.setText(DateUtils.timeParse(duration));
         Glide.with(context)
                 .load(path)
-                .asBitmap()
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .placeholder(R.drawable.image_placeholder)
+//                .asBitmap()
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .placeholder(R.drawable.image_placeholder)
+                .apply(new RequestOptions().placeholder(R.drawable.image_placeholder))
+                .apply(new RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
                 .into(contentHolder.pictureIV);
 
         contentHolder.checkLL.setOnClickListener(new View.OnClickListener() {
@@ -307,7 +310,7 @@ public class HorizontalPictureSelectAdapter2 extends RecyclerView.Adapter<Horizo
         void onPictureClick(LocalMedia media, int position);
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
         ImageView pictureIV;
         View checkLL;
         TextView checkTV;
